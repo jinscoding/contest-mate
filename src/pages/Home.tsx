@@ -1,7 +1,9 @@
-import React from "react";
-
 const Home = () => {
-  return <div></div>;
+  return (
+    <div className='bg-gray-100 p-5'>
+      <p>Home</p>
+    </div>
+  );
 };
 
 export default Home;

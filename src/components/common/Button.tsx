@@ -1,14 +1,38 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
+import { cva, VariantProps } from "class-variance-authority";
 
-interface ButtonProps {
+const buttonStyles = cva(
+  "rounded transition duration-300 text-white focus:outline-none ",
+  {
+    variants: {
+      color: {
+        orange: "bg-orange-500 hover:bg-orange-700 ",
+        blue: "bg-blue-500 hover:bg-blue-700 ",
+        gray: "bg-gray-500 hover:bg-gray-700 ",
+      },
+      size: {
+        small: "px-2 py-1 text-xs",
+        medium: "px-4 py-2 text-sm",
+        large: "px-6 py-3 text-lg",
+      },
+    },
+    defaultVariants: {
+      color: "blue",
+      size: "medium",
+    },
+  }
+);
+
+interface ButtonProps extends VariantProps<typeof buttonStyles> {
   onClick: () => void;
   children: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
+const Button = ({ onClick, children, color, size }: ButtonProps) => {
   return (
     <button
-      className='px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition duration-300'
+      className={twMerge(buttonStyles({ color, size }))}
       onClick={onClick}
     >
       {children}

@@ -1,26 +1,39 @@
-import React, { ForwardedRef } from "react";
+import React from "react";
+import { twMerge } from "tailwind-merge";
+import { cva, VariantProps } from "class-variance-authority";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  placeholder?: string;
-  inputType?: "text" | "number";
-}
-
-const InputText = React.forwardRef(
-  (
-    { placeholder, inputType, onChange, ...props }: Props,
-    ref: ForwardedRef<HTMLInputElement>
-  ) => {
-    return (
-      <input
-        type={inputType}
-        className='px-4 py-2 border border-gray-300 rounded focus:outline-none  mb-2'
-        ref={ref}
-        onChange={onChange}
-        placeholder={placeholder}
-        {...props}
-      />
-    );
+const inputTextStyles = cva(
+  "border rounded p-2 focus:outline-none text-base mb-4 mr-2",
+  {
+    variants: {
+      size: {
+        small: "w-40 h-10",
+        medium: "w-60 h-10",
+        large: "w-96 h-10",
+      },
+      color: {
+        primary: "border-gray-300",
+      },
+    },
+    defaultVariants: {
+      size: "medium",
+      color: "primary",
+    },
   }
 );
+
+interface InputTextProps extends VariantProps<typeof inputTextStyles> {
+  placeholder: string;
+}
+
+const InputText = ({ placeholder, size, color }: InputTextProps) => {
+  return (
+    <input
+      type='text'
+      placeholder={placeholder}
+      className={twMerge(inputTextStyles({ size, color }))}
+    />
+  );
+};
 
 export default InputText;

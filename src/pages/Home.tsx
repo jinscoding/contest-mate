@@ -1,7 +1,6 @@
 import React from "react";
+import Banner from "../components/common/banner/Banner";
 import Button from "../components/common/Button";
-import InputText from "../components/common/InputText";
-import Title from "../components/common/Title";
 
 const Home = () => {
   const handleClick = () => {
@@ -9,15 +8,14 @@ const Home = () => {
   };
 
   return (
-    <div className='bg-gray-100 p-5'>
-      <Title size='medium' color='secondary'>
-        Title
-      </Title>
-      <InputText placeholder='InputText' size='large' color='primary' />
-      <Button color='orange' size='medium' onClick={handleClick}>
-        Button
-      </Button>
-    </div>
+    <>
+      <Banner />
+      <div className='bg-white p-3  h-[1200px] mx-auto'>
+        <Button color='orange' size='large' onClick={handleClick}>
+          모집하기
+        </Button>
+      </div>
+    </>
   );
 };
 

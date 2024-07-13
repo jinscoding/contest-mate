@@ -8,7 +8,7 @@ const buttonStyles = cva(
     variants: {
       color: {
         orange: "bg-orange-500 hover:bg-orange-700 ",
-        blue: "bg-blue-500 hover:bg-blue-700 ",
+        blue: "bg-blue-900 hover:bg-blue-950 hover:text-white",
         gray: "bg-gray-500 hover:bg-gray-700 ",
       },
       size: {

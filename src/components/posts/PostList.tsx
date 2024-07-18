@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegSadCry } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import Title from "../common/Title";
 
 interface Post {
@@ -16,6 +17,12 @@ interface PostListProps {
 }
 
 const PostList = ({ posts }: PostListProps) => {
+  const navigate = useNavigate();
+
+  const handlePostClick = (id: number) => {
+    navigate(`/posts/${id}`);
+  };
+
   const sortedPosts = [...posts].sort((a, b) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
@@ -34,6 +41,7 @@ const PostList = ({ posts }: PostListProps) => {
           <div
             key={post.id}
             className='border p-4 rounded shadow transition-transform duration-300 hover:shadow-lg hover:scale-105 h-[250px] flex flex-col cursor-pointer'
+            onClick={() => handlePostClick(post.id)}
           >
             <Title size='small'>{post.title}</Title>
 

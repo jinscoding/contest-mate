@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import NewPost from "./pages/NewPost";
+import PostDetail from "./components/posts/PostDetail";
 
 const router = createBrowserRouter([
   {
@@ -12,12 +13,19 @@ const router = createBrowserRouter([
       </Layout>
     ),
   },
-
   {
     path: "/posts",
     element: (
       <Layout>
         <NewPost />
+      </Layout>
+    ),
+  },
+  {
+    path: "/posts/:id",
+    element: (
+      <Layout>
+        <PostDetail />
       </Layout>
     ),
   },

@@ -2,12 +2,12 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 import { cva, VariantProps } from "class-variance-authority";
 
-const titleStyles = cva("font-bold mb-4", {
+const titleStyles = cva("mb-1", {
   variants: {
     size: {
-      small: "text-2xl",
-      medium: "text-3xl",
-      large: "text-4xl",
+      small: "font-semibold text-lg",
+      medium: "font-bold text-2xl",
+      large: "font-bold text-3xl",
     },
     color: {
       primary: "text-black",
